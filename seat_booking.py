@@ -1,46 +1,62 @@
-# Initialize bus seats using a dictionary (seat_number: availability)
-bus_seats = {}
+seats = {'A1': 'available', 'A2': 'available', 'A3': 'available', 'A4': 'available', 'A5': 'available',
+    'B1': 'available', 'B2': 'available', 'B3': 'available', 'B4': 'available', 'B5': 'available',
+    'C1': 'available', 'C2': 'available', 'C3': 'available', 'C4': 'available', 'C5': 'available',}
 
-# Assume the bus has 20 seats
-for seat_number in range(1, 21):
-    bus_seats[seat_number] = 'available'  # 'available' or 'reserved'
-
-def display_seating():
-    print("   Seats")
-    print(" 1 2 3 4 5")
-    for i in range(20):
-        if i % 5 == 0:
-            print()
-            print(f'{i + 1:2}', end=' ')
-        if bus_seats[i + 1] == 'available':
-            print('O', end=' ')
-        else:
-            print('X', end=' ')
-    print()
-
-def reserve_seat(seat_number):
-    if seat_number not in bus_seats.keys():
-        print("Invalid seat number. Please choose between 1 and 20")
-    elif bus_seats[seat_number] == 'reserved':
-        print("Sorry, this seat is already reserved. Please select another seat.")
-    else:
-        bus_seats[seat_number] = 'reserved'
-        print(f"Seat number {seat_number} has been successfully reserved.")
-        display_seating()
-
-# Example usage:
+users = {'user1': 'password1','user2': 'password2','user3': 'password3'}
 
 while True:
-        print("\nBus Seat Reservation System")
-        display_seating()
-        seat_choice = input("Enter seat number to reserve (or 'q' to quit): ")
-        
-        if seat_choice.lower() == 'q':
-            print("Thank you for using our bus reservation system.")
-            break
-        
-        try:
-            seat_number = int(seat_choice)
-            reserve_seat(seat_number)
-        except ValueError:
-            print("Invalid input. Please enter a seat number.")
+    print("\nWelcome to Seat Reservation System")
+    print("1. Login")
+    print("2. Register")
+    print("3. Reserve a Seat")
+    print("4. Exit")
+
+    ch =int(input("Enter your choice: "))
+
+    if ch == 1:
+        print("Enter username and password to login:")
+        username = input("Username: ")
+        password = input("Password: ")
+        if users.get(username) == password:
+            print("Login successful!")
+            while True:
+                print("\nAvailable seats:")
+                for seat in seats.keys():
+                    if seats.get(seat) == 'available':
+                        print(seat)
+                seat_choice = input("Enter seat to reserve (e.g: A1), or type 'back' to go back: ")
+                if seat_choice.lower() == 'back':
+                    break
+                if seats.get(seat_choice) == 'available':
+                    seats[seat_choice] = 'reserved'
+                    print("Seat",seat_choice," reserved successfully!")
+                else:
+                    print("Seat",seat_choice," is not available.")
+        else:
+            print("Login failed. Invalid username or password.")
+
+    elif ch == 2:
+        print("Enter new username and password to register:")
+        new_username = input("Username: ")
+        new_password = input("Password: ")
+        users[new_username] = new_password
+        print("Registration successful!")
+
+    elif ch == 3:
+        print("\nAvailable seats:")
+        for seat in seats.keys():
+            if seats.get(seat) == 'available':
+                print(seat)
+        seat_choice = input("Enter seat to reserve(eg:'B4') : ")
+        if seats.get(seat_choice) == 'available':
+            seats[seat_choice] = 'reserved'
+            print("Seat",seat_choice," reserved successfully!")
+        else:
+            print("Seat", seat_choice," is not available.")
+
+    elif ch == 4:
+        print("Thank you for using the Seat Reservation System. Goodbye")
+        break
+
+    else:
+        print("Invalid choice. Please enter a number between 1 and 4.")
