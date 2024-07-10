@@ -29,7 +29,7 @@ while True:
                     break
                 if seats.get(seat_choice) == 'available':
                     seats[seat_choice] = 'reserved'
-                    print("Seat",seat_choice," reserved successfully!")
+                    print("Seat",seat_choice," reserved successfully")
                 else:
                     print("Seat",seat_choice," is not available.")
         else:
