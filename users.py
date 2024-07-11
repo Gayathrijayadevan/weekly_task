@@ -11,6 +11,7 @@ def login_user(username, password):
     global current_user
     if username in users and users[username] == password:
         current_user = {"username": username}
+        print(current_user)
         return True
     return False
 
