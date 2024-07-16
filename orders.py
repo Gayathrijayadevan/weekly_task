@@ -31,6 +31,10 @@ def cancel_order(order_id, username):
         return True
     return False
 
+def admin_view_order():
+    for i in orders:
+        print(i)
+
 
 
 # def view_orders(username):

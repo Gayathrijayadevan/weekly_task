@@ -1,6 +1,6 @@
-from menu import display_menu, get_item,admin_add,admin_delete
-from orders import create_order, view_orders, cancel_order
-from users import register_user, login_user, current_user, logout_user, is_admin1
+from menu import *
+from orders import *
+from users import *
 
 while True:
     print("\nWelcome to the Food Ordering System")
@@ -85,7 +85,7 @@ while True:
                 admin_choice = input("Enter your choice: ")
 
                 if admin_choice == '1':
-                    view_orders()  
+                    admin_view_order() 
                 elif admin_choice == '2':
                     admin_add()
                 elif admin_choice == '3':
