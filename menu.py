@@ -13,7 +13,7 @@ def display_menu():
 def get_item(item_id):
     return menu.get(item_id)
 
-def admin_add(name,price):
+def admin_add():
     name = input("Enter the name of the new item: ")
     price = float(input("Enter the price of the new item: "))
     item_id = str(len(menu) + 1)  

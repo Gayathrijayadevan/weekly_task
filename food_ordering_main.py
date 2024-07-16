@@ -1,6 +1,6 @@
 from menu import display_menu, get_item,admin_add,admin_delete
 from orders import create_order, view_orders, cancel_order
-from users import register_user, login_user, current_user, logout_user, is_admin
+from users import register_user, login_user, current_user, logout_user, is_admin1
 
 while True:
     print("\nWelcome to the Food Ordering System")
@@ -73,7 +73,7 @@ while True:
         admin_username = input("Enter Admin Username: ")
         admin_password = input("Enter Admin Password: ")
         
-        if is_admin(admin_username, admin_password):
+        if is_admin1(admin_username,admin_password):
             print("Admin login successful!")
             while True:
                 print("\nAdmin Panel")
