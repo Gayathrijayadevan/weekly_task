@@ -1,4 +1,5 @@
 users = {}
+admin={'username':'admin' ,'password': '123'}
 current_user = None
 
 def register_user(username, password):
@@ -18,3 +19,8 @@ def login_user(username, password):
 def logout_user():
     global current_user
     current_user = None
+
+def is_admin(username, password):
+    if username== admin['username'] and admin['password'] == password:
+        return True
+    return False
