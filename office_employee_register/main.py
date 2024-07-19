@@ -5,9 +5,9 @@ while True:
     print("3. Admin Login")
     print("4. Exit")
 
-    choice = input("Enter your choice: ")
+    choice = int(input("Enter your choice: "))
 
-    if choice == '1':
+    if choice == 1:
         username = input("Enter Username: ")
         password = input("Set a Password: ")
         if register_user(username, password):
@@ -15,8 +15,9 @@ while True:
         else:
             print("Username already exists.")
     
-    elif choice == '2':
+    elif choice == 2:
         username = input("Enter Username: ")
         password = input("Enter Password: ")
         if login_user(username, password):
             print("Login successful!")
+            print("1.Add Employee Details \n 2.Display Detalis \n 3.Update Detalis \n 4.Delete Detalis \n 5.Exit")
