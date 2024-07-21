@@ -1,23 +1,35 @@
-def update_detalis(dtl):
-    avli_name=input("Enter the name of employee :")
-    f=0
+def update_details(dtl):
+    avli_name = input("Enter the name of employee: ")
+    f = 0
     for i in dtl:
-        if i['name']==avli_name:
-            new_name=input("Enter new name:")
-            i.update("name":new_name)
+        if i['name'] == avli_name:
+            new_name = input("Enter new name (leave blank to keep current name): ")
+            if new_name:
+                i.update({"name": new_name})
 
-            new_age=int(input("Enter new age:"))
-            i.update("age":new_age)
+            new_age = input("Enter new age (leave blank to keep current age): ")
+            if new_age:
+                i.update({"age": new_age})
 
-            new_dept=input("Enter new department name:")
-            i.update("dept":new_dept)
-
-            new_place=input("Enter new place:" )
-            i.update("place":new_place)
-
-            new_number=int(input("Enter new phone number:"))
-            i.update("number":new_number)
-            f=1
-        if f==0:
-            print("sorry this name is not present in the register")    
+            new_job = input("Enter new job (leave blank to keep current): ")
+            if new_job:
+                    i.update({"job": new_job})
             
+            new_dept = input("Enter new department (leave blank to keep current): ")
+            if new_dept:
+                    i.update({"dept": new_dept})
+
+            new_place = input("Enter new place (leave blank to keep current): ")
+            if new_place:
+                    i.update({"place": new_place})
+
+            new_num = input("Enter new number (leave blank to keep current): ")
+            if new_num:
+                    i.update({"place": new_place})
+
+            f = 1
+            print("Details updated successfully.")
+            break
+    
+    if f == 0:
+        print("Sorry, this name is not present in the register.")

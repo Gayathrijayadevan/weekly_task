@@ -1,5 +1,14 @@
-def display_detalis(dtl):
-    print("{:<10}{:<6}".format("name","age","job","department","place","number"))
-    print('_'*20)
+def display_details(dtl):
+    print("{:<15}{:<6}{:<10}{:<12}{:<10}{:<15}".format("name", "age", "job", "department", "place", "number"))
+    print('_' * 68)
     for i in dtl:
-        print(("{:<10}{:<6}").formate(i['name'],i['age'],i['job'],i['department'],i['place'],i['number']))
+        print("{:<15}{:<6}{:<10}{:<12}{:<10}{:<15}".format(i['name'], i['age'], i['job'], i['dept'], 
+                                                           i['place'], i['num']))
+
+def admin_view(dtl):
+    print("{:<15}{:<6}{:<10}{:<12}{:<10}{:<15}".format("name", "age", "job", "department", "place", "number"))
+    print('_' * 68)
+    for i in dtl:
+        print("{:<15}{:<6}{:<10}{:<12}{:<10}{:<15}".format(i['name'], i['age'], i['job'], i['dept'],
+                                                            i['place'], i['num']))
+

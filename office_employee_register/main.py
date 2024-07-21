@@ -32,9 +32,43 @@ while True:
                 if a ==1:
                     add_detalis(dtl)
                 elif a == 2:
-                    display_detalis(dtl) 
+                    display_details(dtl) 
                 elif a == 3:
-                    update_detalis(dtl)  
+                     update_details(dtl)  
                 elif a== 4:
-                    remove(dtl)         
+                    remove(dtl) 
+                elif a==5:
+                    break
+    elif  choice == 3:
+        admin_username = input("Enter Admin Username: ")
+        admin_password = input("Enter Admin Password: ")
+        
+        if is_admin1(admin_username,admin_password):
+            print("Admin login successful!")  
+            while True:
+                print("\nAdmin Panel")
+                print("1. View All employee detalis")
+                print("2. view activity log")
+                print("3. Logout") 
+                admin_choice = input("Enter your choice: ")
+                if admin_choice == '1':
+                    admin_view(dtl)
+
+                elif admin_choice =='2':
+                    view_activity_logs() 
+
+                elif admin_choice == '3':
+                    print("Admin logged out successfully.")
+                    break
+                else:
+                    print("Invalid choice. Please try again.")
+        else:
+            print("Invalid admin credentials. Please try again.")       
+    elif choice == 4:
+        print("Thank you for empolyee registration system!")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")             
+
 

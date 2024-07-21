@@ -3,3 +3,5 @@ def remove(dtl):
     for i in dtl:
         if i["name"]==a_name:
             dtl.remove(i)
+        print("This empolyee record has been deleted")    
+        
