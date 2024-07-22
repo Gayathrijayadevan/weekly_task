@@ -11,21 +11,21 @@ def update_details(dtl):
             if new_age:
                 i.update({"age": new_age})
 
-            new_job = input("Enter new job (leave blank to keep current): ")
+            new_job = input("Enter new job (leave blank to keep current job ): ")
             if new_job:
                     i.update({"job": new_job})
             
-            new_dept = input("Enter new department (leave blank to keep current): ")
+            new_dept = input("Enter new department (leave blank to keep current department): ")
             if new_dept:
                     i.update({"dept": new_dept})
 
-            new_place = input("Enter new place (leave blank to keep current): ")
+            new_place = input("Enter new place (leave blank to keep current place): ")
             if new_place:
                     i.update({"place": new_place})
 
-            new_num = input("Enter new number (leave blank to keep current): ")
+            new_num = input("Enter new  phone number (leave blank to keep current  number): ")
             if new_num:
-                    i.update({"place": new_place})
+                    i.update({"place": new_num})
 
             f = 1
             print("Details updated successfully.")

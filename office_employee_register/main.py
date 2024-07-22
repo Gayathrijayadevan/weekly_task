@@ -44,7 +44,7 @@ while True:
         admin_password = input("Enter Admin Password: ")
         
         if is_admin1(admin_username,admin_password):
-            print("Admin login successful!")  
+            print("Admin logged in successful!")  
             while True:
                 print("\nAdmin Panel")
                 print("1. View All employee detalis")
@@ -65,7 +65,7 @@ while True:
         else:
             print("Invalid admin credentials. Please try again.")       
     elif choice == 4:
-        print("Thank you for empolyee registration system!")
+        print("Thank you for  using empolyee registration system!")
         break
 
     else:
