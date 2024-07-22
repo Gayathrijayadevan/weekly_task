@@ -24,9 +24,11 @@ def login_user(username, password):
         return True
     return False
 
-def logout_user():
+def logout_user(username):
     global current_user
     current_user = None
+    log_activity(f"User logged out: {username}")
+    print("Logged out successfully.")
 
 def is_admin1(username,password):
     for i in admin:
@@ -40,3 +42,13 @@ def view_activity_logs():
     print("\nActivity Logs:")
     for log in activity_logs:
         print(log)
+
+def search_employee(dtl, s):
+    results = []
+    search = s.lower()
+    for i in dtl:
+        if search in i['name'].lower() :
+            for i in results:
+                print(i)
+            results.append(i)
+    return results     

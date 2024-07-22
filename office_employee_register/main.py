@@ -27,7 +27,11 @@ while True:
         if login_user(username, password):
             print("Login successful!")
             while True:
-                print("1.Add Employee Details \n 2.Display Detalis \n 3.Update Detalis \n 4.Delete Detalis \n 5.Exit")
+                print("1.Add Employee Details ")
+                print(" 2.Display Detalis")       
+                print("3.Update Detalis ")         
+                print("4.Delete Detalis ")           
+                print("5.logout")             
                 a=int(input("Enter your choice:"))
                 if a ==1:
                     add_detalis(dtl)
@@ -38,6 +42,7 @@ while True:
                 elif a== 4:
                     remove(dtl) 
                 elif a==5:
+                    logout_user(username)
                     break
     elif  choice == 3:
         admin_username = input("Enter Admin Username: ")
@@ -49,15 +54,23 @@ while True:
                 print("\nAdmin Panel")
                 print("1. View All employee detalis")
                 print("2. view activity log")
-                print("3. Logout") 
+                print("3.search employee")
+                print("4. Logout") 
                 admin_choice = input("Enter your choice: ")
                 if admin_choice == '1':
                     admin_view(dtl)
 
                 elif admin_choice =='2':
-                    view_activity_logs() 
+                    view_activity_logs()
 
                 elif admin_choice == '3':
+                    s = input("Enter employee name : ")
+                    print(s)
+                    results = search_employee(dtl, s)
+                    for i in results:
+                                print(i) 
+
+                elif admin_choice == '4':
                     print("Admin logged out successfully.")
                     break
                 else:
