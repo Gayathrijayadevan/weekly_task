@@ -95,10 +95,7 @@ class JobPortal:
             print("Job not found in the portal.")
 
 
-# Example Usage with Interactive Input
-
 def main():
-    # Create a job portal
     global job_portal
     job_portal = JobPortal()
 
@@ -186,12 +183,12 @@ def job_seeker_menu(job_seeker):
         print("2. View My Applications")
         print("3. Logout")
 
-        choice = input("Enter your choice (1-3): ")
+        choice = input("Enter your choice : ")
 
         if choice == '1':
             print("\nAvailable Jobs:")
-            for idx, job in enumerate(job_portal.jobs, start=1):
-                print(f"{idx}. {job}")
+            for i, job in enumerate(job_portal.jobs, start=1):
+                print(f"{i}. {job}")
             job_choice = input("Enter the number of the job you want to apply for: ")
 
             if job_choice.isdigit():
