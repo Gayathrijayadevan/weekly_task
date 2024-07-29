@@ -108,37 +108,38 @@ def main():
         print("5. List All Jobs")
         print("6. Exit")
 
-        choice = input("Enter your choice (1-6): ")
+        ch =int(input("Enter your choice (1-6): "))
 
-        if choice == '1':
+        if ch == 1:
             username = input("Enter employer username: ")
             password = input("Enter employer password: ")
             company_name = input("Enter company name: ")
             job_portal.register_employer(username, password, company_name)
 
-        elif choice == '2':
+        elif ch == 2:
             username = input("Enter job seeker username: ")
             password = input("Enter job seeker password: ")
             job_portal.register_job_seeker(username, password)
 
-        elif choice == '3':
+        elif ch == 3:
             username = input("Enter employer username: ")
             password = input("Enter employer password: ")
             employer = job_portal.login(username, password)
-            if isinstance(employer, Employer):
+            if type(employer) is Employer:
                 employer_menu(employer)
 
-        elif choice == '4':
+
+        elif ch == 4:
             username = input("Enter job seeker username: ")
             password = input("Enter job seeker password: ")
             job_seeker = job_portal.login(username, password)
             if isinstance(job_seeker, JobSeeker):
                 job_seeker_menu(job_seeker)
 
-        elif choice == '5':
+        elif ch == 5:
             job_portal.list_jobs()
 
-        elif choice == '6':
+        elif ch == 6:
             print("Exiting the job portal. Goodbye!")
             break
 
@@ -150,10 +151,10 @@ def employer_menu(employer):
     while True:
         print("\nEmployer Menu:")
         print("1. Post a Job")
-        print("2. View My Jobs and Applications")
+        print("2. View the Job and Applications")
         print("3. Logout")
 
-        choice = input("Enter your choice (1-3): ")
+        choice = input("Enter your choice from 1 to 3: ")
 
         if choice == '1':
             title = input("Enter job title: ")
@@ -183,9 +184,9 @@ def job_seeker_menu(job_seeker):
         print("2. View My Applications")
         print("3. Logout")
 
-        choice = input("Enter your choice : ")
+        choice =int(input("Enter your choice : "))
 
-        if choice == '1':
+        if choice == 1:
             print("\nAvailable Jobs:")
             for i, job in enumerate(job_portal.jobs, start=1):
                 print(f"{i}. {job}")
@@ -201,14 +202,14 @@ def job_seeker_menu(job_seeker):
             else:
                 print("Invalid input. Please enter a number.")
 
-        elif choice == '2':
+        elif choice == 2:
             print("\nYour Applications:")
             for job in job_portal.jobs:
                 for application in job.applications:
                     if application.job_seeker == job_seeker:
                         print(application)
 
-        elif choice == '3':
+        elif choice == 3:
             print(f"Logging out {job_seeker.username}.")
             break
 
@@ -216,5 +217,4 @@ def job_seeker_menu(job_seeker):
             print("Invalid choice. Please try again.")
 
 
-# Run the main function to start the interactive job portal system
 main()
