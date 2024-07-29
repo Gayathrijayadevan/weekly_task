@@ -13,8 +13,8 @@ class Employer(User):
         self.company_name = company_name
         self.jobs_posted = []
 
-    def post_job(self, title, description):
-        job = Job(title, description, self)
+    def post_job(self, title, description, job_type, category):
+        job = Job(title, description, self, job_type, category)
         self.jobs_posted.append(job)
         return job
 
@@ -31,18 +31,17 @@ class JobSeeker(User):
         application = Application(self, job)
         job.applications.append(application)
         print(f"{self.username} applied for '{job.title}'")
-
-
 class Job:
-    def __init__(self, title, description, employer):
-        self.title = title
-        self.description = description
-        self.employer = employer
-        self.applications = []
+        def __init__(self, title, description, employer, job_type, category):
+            self.title = title
+            self.description = description
+            self.employer = employer
+            self.job_type = job_type
+            self.category = category
+            self.applications = []
 
-    def __str__(self):
-        return f"{self.title} at {self.employer.company_name}"
-
+        def __str__(self):
+            return f"{self.title} at {self.employer.company_name} ({self.job_type}, {self.category})"
 
 class Application:
     def __init__(self, job_seeker, job):
@@ -92,9 +91,22 @@ class JobPortal:
             for application in job.applications:
                 print(application)
         else:
-            print("Job not found in the portal.")
+            print("Job not found in the portal")
 
+    def search_jobs(self, search_term):
+        matching_jobs = [
+            job for job in self.jobs
+            if search_term.lower() in job.title.lower() or search_term.lower() in job.employer.company_name.lower()
+        ]
+        return matching_jobs
 
+    def filter_jobs_by_category(self, category):
+        matching_jobs = [
+            job for job in self.jobs
+            if job.category.lower() == category.lower()
+        ]
+        return matching_jobs
+    
 def main():
     global job_portal
     job_portal = JobPortal()
@@ -159,9 +171,13 @@ def employer_menu(employer):
         if choice == '1':
             title = input("Enter job title: ")
             description = input("Enter job description: ")
-            job = employer.post_job(title, description)
+            job_type = input("Enter job type (e.g., Full-Time, Part-Time, Freelance): ")
+            category = input("Enter job category (e.g., IT, Healthcare, Finance): ")
+
+            job = employer.post_job(title, description, job_type, category)
             job_portal.add_job(job)
             print(f"Job '{title}' posted successfully.")
+
 
         elif choice == '2':
             print("\nYour Jobs:")
@@ -182,7 +198,8 @@ def job_seeker_menu(job_seeker):
         print("\nJob Seeker Menu:")
         print("1. Apply for a Job")
         print("2. View My Applications")
-        print("3. Logout")
+        print("3.Search for jobs")
+        print("4. Logout")
 
         choice =int(input("Enter your choice : "))
 
@@ -208,8 +225,17 @@ def job_seeker_menu(job_seeker):
                 for application in job.applications:
                     if application.job_seeker == job_seeker:
                         print(application)
-
         elif choice == 3:
+            search_term = input("Enter job title or company name to search: ")
+            matching_jobs = job_portal.search_jobs(search_term)
+            print("\nMatching Jobs:")
+            if matching_jobs:
+                for job in matching_jobs:
+                    print(job)
+            else:
+                print("No matching jobs found.")
+
+        elif choice == 4:
             print(f"Logging out {job_seeker.username}.")
             break
 
