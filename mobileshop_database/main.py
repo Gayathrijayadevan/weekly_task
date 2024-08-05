@@ -26,7 +26,9 @@ while True:
                 print(" 3.Delete Detalis")
                 print(" 4.Display Details")
                 print(" 5.Search Detalis ")
-                print("6.Exit ")
+                print("6.Orderby")
+                print("7.Groupby")
+                print("8.logout ")
                 ch=(input("Enter your choice:"))
                 if ch == '1':
                     while True:
@@ -39,7 +41,7 @@ while True:
                         print("6.Employee Table ")
                         print("7.Exit")
                         choi=(input("Enter your choice:"))
-                        if choi==1:
+                        if choi=='1':
                             add_product_details() 
                         elif choi == '2':
                             add_customer_details()
@@ -66,7 +68,7 @@ while True:
                         print("6.Employee Table ")
                         print("7.Exit")
                         choi=(input("Enter your choice:"))
-                        if choi==1:
+                        if choi=='1':
                             update_product_detalis() 
                         elif choi == '2':
                             update_customer_detalis()
@@ -93,7 +95,7 @@ while True:
                         print("6.Employee Table ")
                         print("7.Exit")
                         choi=(input("Enter your choice:"))
-                        if choi==1:
+                        if choi=='1':
                             delete_product_detalis() 
                         elif choi == '2':
                             delete_customer_detalis()
@@ -120,7 +122,7 @@ while True:
                             print("6.Employee Table ")
                             print("7.Exit")
                             choi=(input("Enter your choice:"))
-                            if choi==1:
+                            if choi=='1':
                                 display_product_detalis() 
                             elif choi == '2':
                                 display_customer_detalis()
@@ -147,7 +149,7 @@ while True:
                         print("6.Employee Table ")
                         print("7.Exit")
                         choi=(input("Enter your choice:"))
-                        if choi==1:
+                        if choi=='1':
                             search_product_detalis() 
                         elif choi == '2':
                             search_customer_detalis()
@@ -162,8 +164,66 @@ while True:
                         elif choi =='7':
                             break
                         else:
+                
                             print("Invalid choice. Please try again.")            
                 elif ch == '6':
+                    while True:
+                        print("which table would you like order ?")    
+                        print("1.Product Table")
+                        print("2.Customer Table")
+                        print("3.Sales Table")
+                        print("4.Suppiler Table")
+                        print("5.Inventory Table")
+                        print("6.Employee Table ")
+                        print("7.Exit")
+                        choi=(input("Enter your choice:"))
+                        if choi=='1':
+                            orderby_product() 
+                        elif choi == '2':
+                            orderby_customer()
+                        elif choi == '3':
+                            orderby_sales()
+                        elif choi == '4':
+                            orderby_supplier()
+                        elif choi =='5':
+                            orderby_inventory()
+                        elif choi=='6':
+                            orderby_employee()    
+                        elif choi =='7':
+                            break
+                        else:
+                            print("Invalid choice. Please try again.")     
+
+                elif ch == '7':
+                    while True:
+                        print("which table would you like order ?")    
+                        print("1.Product Table")
+                        print("2.Customer Table")
+                        print("3.Sales Table")
+                        print("4.Suppiler Table")
+                        print("5.Inventory Table")
+                        print("6.Employee Table ")
+                        print("7.Exit")
+                        choi=(input("Enter your choice:"))
+                        if choi=='1':
+                            groupby_product() 
+                        elif choi == '2':
+                            groupby_customer()
+                        elif choi == '3':
+                            groupby_sales()
+                        elif choi == '4':
+                            groupby_suppiler()
+                        elif choi =='5':
+                            groupby_inventory()
+                        elif choi=='6':
+                            groupby_employee()    
+                        elif choi =='7':
+                            break
+                        else:
+                            print("Invalid choice. Please try again.")  
+
+                elif ch == '8':
+                    print("admin loggingout")
                     break                
         else:
             print("Invalid admin credentials. Please try again.")

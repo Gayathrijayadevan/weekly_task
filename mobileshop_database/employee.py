@@ -1,55 +1,70 @@
 import sqlite3
 
-con=sqlite3.connect("database/sqlte3/prog1.db")
+con=sqlite3.connect("weekly_task/mobileshop_database/weeklytask.db")
 try:
-    con.execute("create table products(product_id int,product_name text ,brand text,model text,speci text,price int ,stock int,suppiler_id int)")
+    con.execute("create table employees(emp_id text,emp_name text ,pos text,email text,phone int ,date_hire text)")
 except:
     pass   
 def add_employee_details():
         a=int(input("Enter no. of employees: "))
         for i in range(a):
-            id=int(input("Enter id:"))
+            id=input("Enter id:")
             name=str(input("Enter name:"))
-            age=int(input("Enter age:"))
+            posi=input("Enter position:")
             email=input("Enter email:")
-            salary=int(input("Enter salary:"))
+            phone=int(input("Enter phone number:"))
+            date_h=input("Enter date hired")
 
-            con.execute("insert into staff(id,name,age,email,salary) values(?,?,?,?,?)",(id,name,age,email,salary))
+            con.execute("insert into employees(emp_id,emp_name ,pos,email,phone ,date_hire) values(?,?,?,?,?,?)",(id,name,posi,email,phone,date_h))
             con.commit()
 
 def update_employee_detalis():
-        a = input("Enter name to update:")
+        f=0
+        a = input("Enter  employee name to update:")
         b = input("Enter new name:")
-        data=con.execute("select * from staff where name=?",(a,))
-        for i in data:
-            f=1
-            con.execute("UPDATE staff SET name=? WHERE name=?", (b, a))
-            con.commit()
+        c=input("Enter new position:")
+        d=input("Ënter email:")
+        e=int(input("Enter  new phone number:"))
+        f=input("Enter date heird:")
+        con.execute("UPDATE employees SET emp_name=?,pos=?,email=?,phone=?,date_hire=? WHERE emp_name=?", (b,c,d,e,f,a))
+        f=1
+        con.commit()
 
         if f==0:
             print("sorry this name is not in the list:")
             
 def delete_employee_detalis():
         a=input("Enter id to delete:")
-        con.execute("DELETE from staff WHERE id=?",(a,))
+        con.execute("DELETE from employees WHERE emp_id=?",(a,))
         con.commit()
 
 def display_employee_detalis():
-        data=con.execute("select * from staff")  
-        print("{:<6}{:<10}{:<6}{:<15}{:<10}".format("id","name", "age", "email","salary"))
-        print('_' * 50)
+        data=con.execute("select * from employees")  
+        print("{:<15}{:<15}{:<15}{:<20}{:<15}{:<10}".format("employee_id","employee_name" ,"position","email","phone number" ,"date_hired"))
+        print('_' * 70)
         for i in data:
-            print("{:<6}{:<10}{:<6}{:<15}{:<10}".format(i[0], i[1], i[2],i[3],i[4]))
+            print("{:<15}{:<15}{:<15}{:<20}{:<15}{:<10}".format(i[0], i[1], i[2],i[3],i[4],i[5]))
 
 def search_employee_detalis():
         a=input("Enter the id you want to search:") 
         f=0       
-        data=con.execute("select * from staff where id=?",(a,))
-        print("{:<6}{:<10}{:<6}{:<15}{:<10}".format("id","name", "age", "email","salary"))
-        print('_' * 50)
+        data=con.execute("select * from employees where emp_id=?",(a,))
+        print("{:<15}{:<15}{:<15}{:<20}{:<15}{:<10}".format("employee_id","employee_name" ,"position","email","phone number" ,"date_hired"))
+        print('_' * 70)
         for i in data:
                 f=1
-                print("{:<6}{:<10}{:<6}{:<15}{:<10}".format(i[0], i[1], i[2],i[3],i[4]))
+                print("{:<15}{:<15}{:<15}{:<20}{:<15}{:<10}".format(i[0], i[1], i[2],i[3],i[4],i[5]))
         if f==0:
             print("sorry this person is not in the table")
-    
+def orderby_employee():
+        data=con.execute("select *from employees order by emp_id")
+        print("{:<15}{:<15}{:<15}{:<20}{:<15}{:<10}".format("employee_id","employee_name" ,"position","email","phone number" ,"date_hired"))
+        print('_' * 70)
+        for i in data:
+            print("{:<15}{:<15}{:<15}{:<20}{:<15}{:<10}".format(i[0], i[1], i[2],i[3],i[4],i[5]))
+
+def groupby_employee():
+    data=con.execute("select emp_name from employees group by pos ")
+    for i in data:
+            print(i)
+  
