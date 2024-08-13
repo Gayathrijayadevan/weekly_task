@@ -80,7 +80,7 @@ while True:
                 admin_choice = input("Enter your choice: ")
 
                 if admin_choice == '1':
-                    admin_view_all_users() 
+                    admin_view_all_users(DIRECTORY_PATH) 
                 elif admin_choice == '2':
                     break
                 else:
