@@ -43,6 +43,7 @@ while True:
                     create_account(DIRECTORY_PATH)
                 
                 elif ch == '2':
+                    username=input("Enter account holders name:")
                     display_accounts(DIRECTORY_PATH)
                 
                 elif ch == '3':
